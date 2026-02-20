@@ -1,9 +1,16 @@
 export function setupCounter(element) {
   let counter = 0
+  const max = 10
+
   const setCounter = (count) => {
     counter = count
-    element.innerHTML = `count is ${counter}`
+    element.innerHTML = `count is ${counter} / ${max}`
   }
-  element.addEventListener('click', () => setCounter(counter + 1))
+
+  element.addEventListener('click', () => {
+    const next = Math.min(counter + 1, max)
+    setCounter(next)
+  })
+
   setCounter(0)
 }
